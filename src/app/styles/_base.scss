@@ -28,22 +28,20 @@ a {
     }
 }
 
-button {
-  &:has(kemet-icon[icon=list]) {
-    color: inherit;
-    cursor: pointer;
-    position: absolute;
-    right: 1rem;
-    top: 1rem;
-    border: 0;
-    background: none;
-  }
-}
-
 nav {
   font-family: sans-serif;
   line-height: 1.5;
   display: flex;
   flex-direction: column;
   padding: 1rem;
+}
+
+button[aria-label=menu] {
+  color: inherit;
+  cursor: pointer;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+  border: 0;
+  background: none;
 }

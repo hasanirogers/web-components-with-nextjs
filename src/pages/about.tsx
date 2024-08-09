@@ -1,4 +1,4 @@
-import LayoutDefault from "../app/layouts/default";
+import LayoutLegacy from "../app/layouts/legacy";
 import { ReactElement } from "react";
 import Head from "../app/components/Head";
 import { useRouter } from "next/router";
@@ -24,5 +24,5 @@ export default function About() {
 }
 
 About.getLayout = function getLayout(page: ReactElement) {
-  return <LayoutDefault>{page}</LayoutDefault>;
+  return <LayoutLegacy>{page}</LayoutLegacy>;
 };

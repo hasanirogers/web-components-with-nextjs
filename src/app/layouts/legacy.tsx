@@ -1,9 +1,10 @@
+import { useRouter } from "next/router";
+import { useRef } from "react";
+import KemetDrawer from "kemet-ui/dist/components/kemet-drawer/kemet-drawer";
 import Script from "next/script";
 import paths from "../shared/paths";
 import "../shared/styles";
 import "../styles/shared.scss";
-import { useRouter } from "next/router";
-import { useState } from "react";
 
 export default function RootLayout({
   children,
@@ -11,23 +12,26 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const router = useRouter();
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const kemetDrawerRef = useRef<KemetDrawer>(null);
+
+  if (kemetDrawerRef.current) {
+    kemetDrawerRef.current.addEventListener("kemet-drawer-opened", () => {
+      kemetDrawerRef.current!.opened = true;
+    });
+
+    kemetDrawerRef.current.addEventListener("kemet-drawer-closed", () => {
+      kemetDrawerRef.current!.opened = false;
+    });
+  }
 
   function handleButtonClick() {
     router.push("/about");
-    setIsDrawerOpen(false);
+    if (kemetDrawerRef.current) kemetDrawerRef.current.opened = false;
   }
 
   return (
     <>
-      <kemet-drawer
-        side="right"
-        effect="push"
-        overlay
-        opened={isDrawerOpen}
-        onkemet-drawer-closed={() => setIsDrawerOpen(false)}
-        onkemet-drawer-opened={() => setIsDrawerOpen(true)}
-      >
+      <kemet-drawer side="right" effect="push" overlay ref={kemetDrawerRef}>
         <nav slot="navigation" className="sl-theme-dark">
           <sl-button size="medium" pill onClick={() => handleButtonClick()}>
             Shoelace Button
@@ -41,7 +45,10 @@ export default function RootLayout({
           <p>Click either button to view a demo page with Web Components!</p>
         </nav>
         <section slot="content">
-          <button aria-label="menu" onClick={() => setIsDrawerOpen(true)}>
+          <button
+            aria-label="menu"
+            onClick={() => (kemetDrawerRef.current!.opened = true)}
+          >
             <kemet-icon icon="list" size="32"></kemet-icon>
           </button>
           {children}

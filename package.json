@@ -8,14 +8,14 @@
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start",
-    "watch": "concurrently \"npm:dev\" \"npm:build:rollup\""
+    "watch": "concurrently \"npm:dev\" \"npm:build:rollup -- -w\""
   },
   "dependencies": {
     "@shoelace-style/shoelace": "^2.16.0",
     "kemet-ui": "^3.0.1",
-    "next": "14.2.5",
-    "react": "^18",
-    "react-dom": "^18",
+    "next": "^15.0.0-rc.0",
+    "react": "^19.0.0-rc-9d2da591-20240808",
+    "react-dom": "^19.0.0-rc-9d2da591-20240808",
     "sass": "^1.77.8"
   },
   "devDependencies": {
@@ -28,7 +28,7 @@
     "@types/react-dom": "^18",
     "concurrently": "^8.2.2",
     "eslint": "^8",
-    "eslint-config-next": "14.2.5",
+    "eslint-config-next": "^15.0.0-rc.0",
     "rollup": "^4.20.0",
     "rollup-styles": "^1.5.0",
     "typescript": "^5"

@@ -17,3 +17,9 @@ declare namespace JSX {
     "kemet-icon": any;
   }
 }
+
+declare namespace JSX {
+  interface IntrinsicElements {
+    "kemet-drawer": any;
+  }
+}

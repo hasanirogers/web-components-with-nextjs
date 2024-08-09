@@ -13,18 +13,11 @@ export default function Page() {
         title="Web Components + Next.js"
         description="An example on how to use Web Component in an Next.js app."
       />
-      <main className={"main sl-theme-dark"}>
-        <sl-button size="medium" pill onClick={() => router.push("/about")}>
-          Shoelace Button
-        </sl-button>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <kemet-button variant="pill" onClick={() => router.push("/about")}>
-          Kemet Button
-        </kemet-button>
+      <main className={"main"}>
         <div className={"description"}>
           <p>
-            Get started by editing&nbsp;
-            <code className={"code"}>src/app/page.tsx</code>
+            Click the hamburger icon in the top right to see a Web Component in
+            action.
           </p>
           <div>
             <a
